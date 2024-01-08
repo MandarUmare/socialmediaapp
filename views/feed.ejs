@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/stylesheets/feed.css">
+</head>
+
+<body>
+  <!DOCTYPE html>
+  <html>
+
+  <head>
+    <script src="https://kit.fontawesome.com/aa80f1a8dd.js" crossorigin="anonymous"></script>
+    <title></title>
+  </head>
+
+  <body>
+    <% include ./patials/nav.ejs %>
+
+      <main>
+        <section>
+          <h2></h2>
+          <p></p>
+          <p></p>
+        </section>
+        <div class="container_grid">
+          <div class="modal">
+            <div class='carousel'>
+              <div id="close-carousel">
+                <div class="x">
+                  <div id="barra1"></div>
+                  <div id="barra2"></div>
+                </div>
+              </div>
+              <div class="setas">
+                <div class="seta-esq">
+                  <div id='prev-card'><i class="fa-solid fa-angle-left" style="color: #ffffff;"></i></div>
+                </div>
+                <div class="seta-dir">
+                  <div id='next-card'><i class="fa-solid fa-angle-right" style="color: #ffffff;"></i></div>
+                </div>
+              </div>
+              <div class="centered-container">
+                <img class="modal-content" src="" alt="">
+              </div>
+            </div>
+            <span class="close"></span>
+          </div>
+          <div class='carousel-images'>
+            <% posts.forEach(function(post){ %>
+              <div class="card_small card_exp">
+                <img class="img_card"
+                  src="/images/uploads/<%=post.image%>"
+                  alt="">
+                <img class="profile" src="/images/uploads/<%= post.user.profile %>" alt="">
+                <figcaption style="font-size: larger;"><%=post.user.username%></figcaption>
+                <figcaption style="position:absolute ;bottom:10px;font-weight: lighter;"><%=post.text%></figcaption>
+             
+                
+              </div>
+              <%})%>
+
+
+          </div>
+        </div>
+
+      </main>
+
+      <footer>
+        <p></p>
+      </footer>
+      <script src="/javascripts/feed.js"></script>
+  </body>
+
+  </html>
+
+</body>
+
+</html>

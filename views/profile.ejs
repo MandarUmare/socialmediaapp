@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/stylesheets/profile.css">
+  <link rel="stylesheet" href="/stylesheets/feed.css">
+ 
+</head>
+
+<body>
+  <% include ./patials/nav.ejs %>
+  <div class="pcontainer">
+    <div class="pcard">
+      <form hidden action="/upload/profile" method="post" enctype="multipart/form-data">
+        <input id="profilepicture" type="file" name="file">
+        <button id="profilesubmitbtn" type="submit">Upload</button>
+      </form>
+      <div class="profile-picture">
+        <img src="/images/uploads/<%= user.profile %>" alt="Profile Picture">
+       
+      </div>
+      <a hidden  href="https://icons8.com/icon/Wm7WXHlaYimz/edit-profile"></a> <a hidden href="https://icons8.com"></a>
+      <img class="editprofile" width="48" height="48" src="https://img.icons8.com/fluency-systems-regular/48/edit-user-female.png" alt="edit-user-female"/>
+     
+      <h2 class="name">
+        <%=user.username%>
+      </h2>
+      <h3 class="username">
+        <%=user.email%>
+      </h3>
+      <p class="tagline bg-red-800">Lorem ipsum dolor sit amet.</p>
+      <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati.</p>
+      
+      <button class="addpost" ><a href="/upload" class="" >Add a new post</a></button>
+    </div>
+  </div>
+  <div class="container_grid">
+    <div class="modal">
+      <div class='carousel'>
+        <div id="close-carousel">
+          <div class="x">
+            <div id="barra1"></div>
+            <div id="barra2"></div>
+          </div>
+        </div>
+        <div class="setas">
+          <div class="seta-esq">
+            <div id='prev-card'><i class="fa-solid fa-angle-left" style="color: #ffffff;"></i></div>
+          </div>
+          <div class="seta-dir">
+            <div id='next-card'><i class="fa-solid fa-angle-right" style="color: #ffffff;"></i></div>
+          </div>
+        </div>
+        <div class="centered-container">
+          <img class="modal-content" src="" alt="">
+        </div>
+      </div>
+      <span class="close"></span>
+    </div>
+    <div class='carousel-images'>
+      <% user.posts.forEach(function(post){ %>
+        <div class="card_small card_exp">
+         
+          <img class="img_card" src="/images/uploads/<%= post.image %>" alt="jjdis">
+          <figcaption style="position: absolute; bottom: 20px; left: 10px;">
+            <%= post.text %>
+          </figcaption>
+        </div>
+        <% }) %>
+    </div>
+  </div>
+
+
+
+
+  <section>
+    <h2></h2>
+    <p></p>
+    <p></p>
+  </section>
+  <div class="container_grid">
+    <div class="modal">
+      <div class='carousel'>
+        <div id="close-carousel">
+          <div class="x">
+            <div id="barra1"></div>
+            <div id="barra2"></div>
+          </div>
+        </div>
+        <div class="setas">
+          <div class="seta-esq">
+            <div id='prev-card'><i class="fa-solid fa-angle-left" style="color: #ffffff;"></i></div>
+          </div>
+          <div class="seta-dir">
+            <div id='next-card'><i class="fa-solid fa-angle-right" style="color: #ffffff;"></i></div>
+          </div>
+        </div>
+        <div class="centered-container">
+          <img class="modal-content" src="" alt="">
+        </div>
+      </div>
+      <span class="close"></span>
+    </div>
+    <div class='carousel-images'>
+
+
+
+
+    </div>
+  </div>
+
+  <script>
+
+    document.querySelector(".editprofile").addEventListener("click", function () {
+      
+      document.getElementById("profilepicture").click();
+      document.getElementById("profilepicture").addEventListener("change", function () {
+        document.getElementById("profilesubmitbtn").click();
+      });
+    })
+  </script>
+  
+  <script src="/javascripts/feed.js"></script>
+</body>
+
+</html>
